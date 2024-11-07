@@ -12,10 +12,10 @@ namespace Test
         public void Gimei_SharedGeneratorプロパティについて_規定値はnullではなく_nullを設定すると例外が発生して値が変更されないこと()
         {
             var before = Gimei.SharedGenerator;
-            Assert.NotNull(before);
+            Assert.That(before, Is.Not.Null);
             Assert.Catch(() => Gimei.SharedGenerator = null);
             var after = Gimei.SharedGenerator;
-            Assert.AreSame(before, after);
+            Assert.That(after, Is.SameAs(before));
         }
 
         [TestCase]
@@ -37,9 +37,9 @@ namespace Test
             for (var i = 0; i < 100; i++)
             {
                 var target = Gimei.NewName();
-                Assert.True(Regex.IsMatch(target.Kanji, kanjiPattern), target.Kanji);
-                Assert.True(Regex.IsMatch(target.Hiragana, @"^[ \p{IsHiragana}]+$"), target.Hiragana);
-                Assert.True(Regex.IsMatch(target.Katakana, @"^[ \p{IsKatakana}]+$"), target.Katakana);
+                Assert.That(Regex.IsMatch(target.Kanji, kanjiPattern), Is.True, target.Kanji);
+                Assert.That(Regex.IsMatch(target.Hiragana, @"^[ \p{IsHiragana}]+$"), Is.True, target.Hiragana);
+                Assert.That(Regex.IsMatch(target.Katakana, @"^[ \p{IsKatakana}]+$"), Is.True, target.Katakana);
             }
         }
 
@@ -55,9 +55,9 @@ namespace Test
                 var target = Gimei.NewName();
                 counter[target.Gender]++;
             }
-            Assert.GreaterOrEqual(counter[GenderIdentity.Male], 1);
-            Assert.GreaterOrEqual(counter[GenderIdentity.Female], 1);
-            Assert.AreEqual(100, counter[GenderIdentity.Male] + counter[GenderIdentity.Female]);
+            Assert.That(counter[GenderIdentity.Male], Is.GreaterThanOrEqualTo(1));
+            Assert.That(counter[GenderIdentity.Female], Is.GreaterThanOrEqualTo(1));
+            Assert.That(100, Is.EqualTo(counter[GenderIdentity.Male] + counter[GenderIdentity.Female]));
         }
 
         [TestCase]
@@ -65,9 +65,9 @@ namespace Test
         {
             Gimei.SharedGenerator = Mock.SingleDataGenerator();
             var target = Gimei.NewMale();
-            Assert.AreEqual(true, target.IsMale);
-            Assert.AreEqual(false, target.IsFemale);
-            Assert.AreEqual("佐藤 翔太", target.ToString());
+            Assert.That(target.IsMale, Is.True);
+            Assert.That(target.IsFemale, Is.False);
+            Assert.That(target.ToString(), Is.EqualTo("佐藤 翔太"));
         }
 
         [TestCase]
@@ -75,9 +75,9 @@ namespace Test
         {
             Gimei.SharedGenerator = Mock.SingleDataGenerator();
             var target = Gimei.NewFemale();
-            Assert.AreEqual(false, target.IsMale);
-            Assert.AreEqual(true, target.IsFemale);
-            Assert.AreEqual("佐藤 美咲", target.ToString());
+            Assert.That(target.IsMale, Is.False);
+            Assert.That(target.IsFemale, Is.True);
+            Assert.That(target.ToString(), Is.EqualTo("佐藤 美咲"));
         }
 
         [TestCase]
@@ -98,9 +98,9 @@ namespace Test
             for (var i = 0; i < 100; i++)
             {
                 var target = Gimei.NewAddress();
-                Assert.True(Regex.IsMatch(target.Kanji, kanjiPattern), target.Kanji);
-                Assert.True(Regex.IsMatch(target.Hiragana, @"^\p{IsHiragana}+$"), target.Hiragana);
-                Assert.True(Regex.IsMatch(target.Katakana, @"^\p{IsKatakana}+$"), target.Katakana);
+                Assert.That(Regex.IsMatch(target.Kanji, kanjiPattern), Is.True, target.Kanji);
+                Assert.That(Regex.IsMatch(target.Hiragana, @"^[ \p{IsHiragana}]+$"), Is.True, target.Hiragana);
+                Assert.That(Regex.IsMatch(target.Katakana, @"^[ \p{IsKatakana}]+$"), Is.True, target.Katakana);
             }
         }
 
@@ -109,9 +109,9 @@ namespace Test
         {
             Gimei.SharedGenerator = Mock.SingleDataGenerator();
             var target = Gimei.NewAddress();
-            Assert.AreEqual("東京都", target.Prefecture.ToString());
-            Assert.AreEqual("千代田区", target.City.ToString());
-            Assert.AreEqual("千代田", target.Town.ToString());
+            Assert.That(target.Prefecture.ToString(), Is.EqualTo("東京都"));
+            Assert.That(target.City.ToString(), Is.EqualTo("千代田区"));
+            Assert.That(target.Town.ToString(), Is.EqualTo("千代田"));
         }
 
         [TestCase]
@@ -119,7 +119,7 @@ namespace Test
         {
             Gimei.SharedGenerator = Mock.SingleDataGenerator();
             var target = Gimei.NewPrefecture();
-            Assert.AreEqual("東京都", target.ToString());
+            Assert.That(target.ToString(), Is.EqualTo("東京都"));
         }
 
         [TestCase]
@@ -127,7 +127,7 @@ namespace Test
         {
             Gimei.SharedGenerator = Mock.SingleDataGenerator();
             var target = Gimei.NewCity();
-            Assert.AreEqual("千代田区", target.ToString());
+            Assert.That(target.ToString(), Is.EqualTo("千代田区"));
         }
 
         [TestCase]
@@ -135,7 +135,7 @@ namespace Test
         {
             Gimei.SharedGenerator = Mock.SingleDataGenerator();
             var target = Gimei.NewTown();
-            Assert.AreEqual("千代田", target.ToString());
+            Assert.That(target.ToString(), Is.EqualTo("千代田"));
         }
     }
 }

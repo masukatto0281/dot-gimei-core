@@ -18,7 +18,7 @@ namespace Test
             var before = target.Prefecture;
             Assert.Catch(() => target.Prefecture = null);
             var after = target.Prefecture;
-            Assert.AreSame(before, after);
+            Assert.That(after, Is.SameAs(before));
         }
 
         [TestCase]
@@ -28,7 +28,7 @@ namespace Test
             var before = target.City;
             Assert.Catch(() => target.City = null);
             var after = target.City;
-            Assert.AreSame(before, after);
+            Assert.That(after, Is.SameAs(before));
         }
 
         [TestCase]
@@ -38,7 +38,7 @@ namespace Test
             var before = target.Town;
             Assert.Catch(() => target.Town = null);
             var after = target.Town;
-            Assert.AreSame(before, after);
+            Assert.That(after, Is.SameAs(before));
         }
 
         [TestCase]
@@ -48,7 +48,7 @@ namespace Test
             target.Prefecture = new JapaneseText { Kanji = "東京都" };
             target.City = new JapaneseText { Kanji = "千代田区" };
             target.Town = new JapaneseText { Kanji = "千代田" };
-            Assert.AreEqual("東京都千代田区千代田", target.Kanji);
+            Assert.That(target.Kanji, Is.EqualTo("東京都千代田区千代田"));
         }
 
         [TestCase]
@@ -58,7 +58,7 @@ namespace Test
             target.Prefecture = new JapaneseText { Hiragana = "とうきょうと" };
             target.City = new JapaneseText { Hiragana = "ちよだく" };
             target.Town = new JapaneseText { Hiragana = "ちよだ" };
-            Assert.AreEqual("とうきょうとちよだくちよだ", target.Hiragana);
+            Assert.That(target.Hiragana, Is.EqualTo("とうきょうとちよだくちよだ"));
         }
 
         [TestCase]
@@ -68,7 +68,7 @@ namespace Test
             target.Prefecture = new JapaneseText { Katakana = "トウキョウト" };
             target.City = new JapaneseText { Katakana = "チヨダク" };
             target.Town = new JapaneseText { Katakana = "チヨダ" };
-            Assert.AreEqual("トウキョウトチヨダクチヨダ", target.Katakana);
+            Assert.That(target.Katakana, Is.EqualTo("トウキョウトチヨダクチヨダ"));
         }
 
         [TestCase]
@@ -78,7 +78,7 @@ namespace Test
             target.Prefecture = new JapaneseText { Kanji = "東京都" };
             target.City = new JapaneseText { Kanji = "千代田区" };
             target.Town = new JapaneseText { Kanji = "千代田" };
-            Assert.AreEqual(target.Kanji, target.ToString());
+            Assert.That(target.ToString(), Is.EqualTo(target.Kanji));
         }
     }
 }

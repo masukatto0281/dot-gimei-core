@@ -10,7 +10,7 @@ namespace Test
         public void JapaneseText_Kanjiプロパティについて_規定値はnullではないこと()
         {
             var target = new JapaneseText();
-            Assert.NotNull(target.Kanji);
+            Assert.That(target.Kanji, Is.Not.Null);
         }
 
         [TestCase]
@@ -18,7 +18,7 @@ namespace Test
         {
             var target = new JapaneseText();
             target.Kanji = "漢字";
-            Assert.AreEqual("漢字", target.Kanji);
+            Assert.That(target.Kanji, Is.EqualTo("漢字"));
         }
 
         [TestCase]
@@ -26,14 +26,14 @@ namespace Test
         {
             var target = new JapaneseText();
             target.Kanji = null;
-            Assert.AreEqual("", target.Kanji);
+            Assert.That(target.Kanji, Is.EqualTo(""));
         }
 
         [TestCase]
         public void JapaneseText_Hiraganaプロパティについて_規定値はnullではないこと()
         {
             var target = new JapaneseText();
-            Assert.NotNull(target.Hiragana);
+            Assert.That(target.Hiragana, Is.Not.Null);
         }
 
         [TestCase]
@@ -41,7 +41,7 @@ namespace Test
         {
             var target = new JapaneseText();
             target.Hiragana = "ひらがな";
-            Assert.AreEqual("ひらがな", target.Hiragana);
+            Assert.That(target.Hiragana, Is.EqualTo("ひらがな"));
         }
 
         [TestCase]
@@ -49,14 +49,14 @@ namespace Test
         {
             var target = new JapaneseText();
             target.Hiragana = null;
-            Assert.AreEqual("", target.Hiragana);
+            Assert.That(target.Hiragana, Is.EqualTo(""));
         }
 
         [TestCase]
         public void JapaneseText_Katakanaプロパティについて_規定値はnullではないこと()
         {
             var target = new JapaneseText();
-            Assert.NotNull(target.Katakana);
+            Assert.That(target.Katakana, Is.Not.Null);
         }
 
         [TestCase]
@@ -64,7 +64,7 @@ namespace Test
         {
             var target = new JapaneseText();
             target.Katakana = "カタカナ";
-            Assert.AreEqual("カタカナ", target.Katakana);
+            Assert.That(target.Katakana, Is.EqualTo("カタカナ"));
         }
 
         [TestCase]
@@ -72,7 +72,7 @@ namespace Test
         {
             var target = new JapaneseText();
             target.Katakana = null;
-            Assert.AreEqual("", target.Katakana);
+            Assert.That(target.Katakana, Is.EqualTo(""));
         }
 
         [TestCase]
@@ -80,7 +80,7 @@ namespace Test
         {
             var target = new JapaneseText();
             target.Kanji = "漢字";
-            Assert.AreEqual(target.Kanji, target.ToString());
+            Assert.That(target.ToString(), Is.EqualTo(target.Kanji));
         }
     }
 }

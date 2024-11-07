@@ -13,7 +13,7 @@ namespace Test
             var before = target.First;
             Assert.Catch(() => target.First = null);
             var after = target.First;
-            Assert.AreSame(before, after);
+            Assert.That(after, Is.SameAs(before));
         }
 
         [TestCase]
@@ -23,33 +23,33 @@ namespace Test
             var before = target.Last;
             Assert.Catch(() => target.Last = null);
             var after = target.Last;
-            Assert.AreSame(before, after);
+            Assert.That(after, Is.SameAs(before));
         }
 
         [TestCase]
         public void Name_IsMaleプロパティについて_GenderがMaleの時はtrue_GenderがFemaleの時はfalse_それ以外の時はnullを返すこと()
         {
             var male = new Name { Gender = GenderIdentity.Male };
-            Assert.AreEqual(true, male.IsMale, "Male");
+            Assert.That(male.IsMale, Is.EqualTo(true), "Male");
             var female = new Name { Gender = GenderIdentity.Female };
-            Assert.AreEqual(false, female.IsMale, "Female");
+            Assert.That(female.IsMale, Is.EqualTo(false), "Female");
             var notKnown = new Name { Gender = GenderIdentity.NotKnown };
-            Assert.AreEqual(null, notKnown.IsMale, "Not Known");
+            Assert.That(notKnown.IsMale, Is.EqualTo(null), "Not Known");
             var notApplicable = new Name { Gender = GenderIdentity.NotApplicable };
-            Assert.AreEqual(null, notApplicable.IsMale, "Not Applicable");
+            Assert.That(notApplicable.IsMale, Is.EqualTo(null), "Not Applicable");
         }
 
         [TestCase]
         public void Name_IsFemaleプロパティについて_GenderがMaleの時はfalse_GenderがFemaleの時はtrue_それ以外の時はnullを返すこと()
         {
             var male = new Name { Gender = GenderIdentity.Male };
-            Assert.AreEqual(false, male.IsFemale, "Male");
+            Assert.That(male.IsFemale, Is.EqualTo(false), "Male");
             var female = new Name { Gender = GenderIdentity.Female };
-            Assert.AreEqual(true, female.IsFemale, "Female");
+            Assert.That(female.IsFemale, Is.EqualTo(true), "Female");
             var notKnown = new Name { Gender = GenderIdentity.NotKnown };
-            Assert.AreEqual(null, notKnown.IsFemale, "Not Known");
+            Assert.That(notKnown.IsFemale, Is.EqualTo(null), "Not Known");
             var notApplicable = new Name { Gender = GenderIdentity.NotApplicable };
-            Assert.AreEqual(null, notApplicable.IsFemale, "Not Applicable");
+            Assert.That(notApplicable.IsFemale, Is.EqualTo(null), "Not Applicable");
         }
 
         [TestCase]
@@ -58,7 +58,7 @@ namespace Test
             var target = new Name();
             target.Last = new JapaneseText { Kanji = "佐藤" };
             target.First = new JapaneseText { Kanji = "美咲" };
-            Assert.AreEqual("佐藤 美咲", target.Kanji);
+            Assert.That(target.Kanji, Is.EqualTo("佐藤 美咲"));
         }
 
         [TestCase]
@@ -67,7 +67,7 @@ namespace Test
             var target = new Name();
             target.Last = new JapaneseText { Hiragana = "さとう" };
             target.First = new JapaneseText { Hiragana = "みさき" };
-            Assert.AreEqual("さとう みさき", target.Hiragana);
+            Assert.That(target.Hiragana, Is.EqualTo("さとう みさき"));
         }
 
         [TestCase]
@@ -76,7 +76,7 @@ namespace Test
             var target = new Name();
             target.Last = new JapaneseText { Katakana = "サトウ" };
             target.First = new JapaneseText { Katakana = "ミサキ" };
-            Assert.AreEqual("サトウ ミサキ", target.Katakana);
+            Assert.That(target.Katakana, Is.EqualTo("サトウ ミサキ"));
         }
 
         [TestCase]
@@ -85,7 +85,7 @@ namespace Test
             var target = new Name();
             target.Last = new JapaneseText { Kanji = "佐藤" };
             target.First = new JapaneseText { Kanji = "美咲" };
-            Assert.AreEqual(target.Kanji, target.ToString());
+            Assert.That(target.ToString(), Is.EqualTo(target.Kanji));
         }
     }
 }
