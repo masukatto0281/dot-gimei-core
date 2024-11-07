@@ -1,9 +1,9 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotGimei", "DotGimei\DotGimei.csproj", "{E0AB582D-7017-4FB8-ACD7-EB657585B788}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotGimei", "DotGimei\DotGimei.csproj", "{E0AB582D-7017-4FB8-ACD7-EB657585B788}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "data", "data", "{4092A1B8-1830-409B-843D-09E1C7B296A1}"
 	ProjectSection(SolutionItems) = preProject
@@ -11,7 +11,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "data", "data", "{4092A1B8-1
 		data\names.yml = data\names.yml
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{6E2776EA-FBD3-4971-90EA-3C530D49F81C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Test", "Test\Test.csproj", "{6E2776EA-FBD3-4971-90EA-3C530D49F81C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
