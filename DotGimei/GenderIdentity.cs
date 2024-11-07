@@ -17,4 +17,3 @@ namespace DotGimei
         NotApplicable = 9
     }
 }
-

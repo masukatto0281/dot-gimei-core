@@ -7,13 +7,14 @@ namespace DotGimei
     /// </summary>
     public class Address : IJapaneseText
     {
-        private JapaneseText _prefecture = new JapaneseText();
-        private JapaneseText _city = new JapaneseText();
-        private JapaneseText _town = new JapaneseText();
+        private JapaneseText _prefecture = new();
+        private JapaneseText _city = new();
+        private JapaneseText _town = new();
 
-        private JapaneseText EnsureNotNull(JapaneseText value)
+        private static JapaneseText EnsureNotNull(JapaneseText value)
         {
-            if (value == null) throw new ArgumentNullException("value");
+            ArgumentNullException.ThrowIfNull(value);
+
             return value;
         }
 

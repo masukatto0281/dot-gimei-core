@@ -13,7 +13,7 @@ namespace DotGimei
     /// <threadsafety static="false" instance="false" />
     public static class Gimei
     {
-        private static Generator generator = new Generator();
+        private static Generator generator = new();
 
         /// <summary>
         /// 既定の<see cref="Generator"/>オブジェクトを取得または設定します。
@@ -26,7 +26,8 @@ namespace DotGimei
 
         private static Generator EnsureNotNull(Generator value)
         {
-            if (value == null) throw new ArgumentNullException("value");
+            ArgumentNullException.ThrowIfNull(value);
+
             return value;
         }
 
@@ -183,10 +184,8 @@ namespace DotGimei
                 _r = random ?? new Random();
                 if (addresses == null)
                 {
-                    using (var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("DotGimei.data.addresses.yml"))
-                    {
-                        _addresses = Addresses.Load(new StreamReader(stream));
-                    }
+                    using var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("DotGimei.data.addresses.yml");
+                    _addresses = Addresses.Load(new StreamReader(stream));
                 }
                 else
                 {
@@ -194,10 +193,8 @@ namespace DotGimei
                 }
                 if (names == null)
                 {
-                    using (var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("DotGimei.data.names.yml"))
-                    {
-                        _names = Names.Load(new StreamReader(stream));
-                    }
+                    using var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("DotGimei.data.names.yml");
+                    _names = Names.Load(new StreamReader(stream));
                 }
                 else
                 {

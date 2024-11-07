@@ -16,16 +16,20 @@ namespace Test
         [TestCase]
         public void JapaneseText_Kanjiプロパティについて_nullでない値を設定できること()
         {
-            var target = new JapaneseText();
-            target.Kanji = "漢字";
+            var target = new JapaneseText
+            {
+                Kanji = "漢字"
+            };
             Assert.That(target.Kanji, Is.EqualTo("漢字"));
         }
 
         [TestCase]
         public void JapaneseText_Kanjiプロパティについて_nullを設定すると値が空文字列になること()
         {
-            var target = new JapaneseText();
-            target.Kanji = null;
+            var target = new JapaneseText
+            {
+                Kanji = null
+            };
             Assert.That(target.Kanji, Is.EqualTo(""));
         }
 
@@ -39,16 +43,20 @@ namespace Test
         [TestCase]
         public void JapaneseText_Hiraganaプロパティについて_nullでない値を設定できること()
         {
-            var target = new JapaneseText();
-            target.Hiragana = "ひらがな";
+            var target = new JapaneseText
+            {
+                Hiragana = "ひらがな"
+            };
             Assert.That(target.Hiragana, Is.EqualTo("ひらがな"));
         }
 
         [TestCase]
         public void JapaneseText_Hiraganaプロパティについて_nullを設定すると値が空文字列になること()
         {
-            var target = new JapaneseText();
-            target.Hiragana = null;
+            var target = new JapaneseText
+            {
+                Hiragana = null
+            };
             Assert.That(target.Hiragana, Is.EqualTo(""));
         }
 
@@ -62,24 +70,30 @@ namespace Test
         [TestCase]
         public void JapaneseText_Katakanaプロパティについて_nullでない値を設定できること()
         {
-            var target = new JapaneseText();
-            target.Katakana = "カタカナ";
+            var target = new JapaneseText
+            {
+                Katakana = "カタカナ"
+            };
             Assert.That(target.Katakana, Is.EqualTo("カタカナ"));
         }
 
         [TestCase]
         public void JapaneseText_Katakanaプロパティについて_nullを設定すると値が空文字列になること()
         {
-            var target = new JapaneseText();
-            target.Katakana = null;
+            var target = new JapaneseText
+            {
+                Katakana = null
+            };
             Assert.That(target.Katakana, Is.EqualTo(""));
         }
 
         [TestCase]
         public void JapaneseText_ToStringメソッドについて_Kanjiプロパティと同じ文字列であること()
         {
-            var target = new JapaneseText();
-            target.Kanji = "漢字";
+            var target = new JapaneseText
+            {
+                Kanji = "漢字"
+            };
             Assert.That(target.ToString(), Is.EqualTo(target.Kanji));
         }
     }

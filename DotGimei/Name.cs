@@ -7,11 +7,12 @@ namespace DotGimei
     /// </summary>
     public class Name : IJapaneseText
     {
-        private JapaneseText _last = new JapaneseText();
-        private JapaneseText _first = new JapaneseText();
-        private JapaneseText EnsureNotNull(JapaneseText value)
+        private JapaneseText _last = new();
+        private JapaneseText _first = new();
+        private static JapaneseText EnsureNotNull(JapaneseText value)
         {
-            if (value == null) throw new ArgumentNullException("value");
+            ArgumentNullException.ThrowIfNull(value);
+
             return value;
         }
 
@@ -43,15 +44,12 @@ namespace DotGimei
         {
             get
             {
-                switch (Gender)
+                return Gender switch
                 {
-                    case GenderIdentity.Male:
-                        return true;
-                    case GenderIdentity.Female:
-                        return false;
-                    default:
-                        return null;
-                }
+                    GenderIdentity.Male => true,
+                    GenderIdentity.Female => false,
+                    _ => null,
+                };
             }
         }
         /// <summary>
@@ -62,15 +60,12 @@ namespace DotGimei
         {
             get
             {
-                switch (Gender)
+                return Gender switch
                 {
-                    case GenderIdentity.Male:
-                        return false;
-                    case GenderIdentity.Female:
-                        return true;
-                    default:
-                        return null;
-                }
+                    GenderIdentity.Male => false,
+                    GenderIdentity.Female => true,
+                    _ => null,
+                };
             }
         }
         /// <summary>

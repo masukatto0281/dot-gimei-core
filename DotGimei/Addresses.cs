@@ -13,9 +13,9 @@ namespace DotGimei
 
         internal class Inner
         {
-            public List<string[]> prefecture { get; set; }
-            public List<string[]> city { get; set; }
-            public List<string[]> town { get; set; }
+            public List<string[]> Prefecture { get; set; }
+            public List<string[]> City { get; set; }
+            public List<string[]> Town { get; set; }
         }
         public Inner addresses { get; set; }
 
@@ -28,9 +28,9 @@ namespace DotGimei
 
         internal Address Next(Random r)
         {
-            var pref = addresses.prefecture[r.Next(addresses.prefecture.Count)];
-            var city = addresses.city[r.Next(addresses.city.Count)];
-            var town = addresses.town[r.Next(addresses.town.Count)];
+            var pref = addresses.Prefecture[r.Next(addresses.Prefecture.Count)];
+            var city = addresses.City[r.Next(addresses.City.Count)];
+            var town = addresses.Town[r.Next(addresses.Town.Count)];
             return new Address
             {
                 Prefecture = new JapaneseText

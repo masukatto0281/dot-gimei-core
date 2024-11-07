@@ -55,36 +55,44 @@ namespace Test
         [TestCase]
         public void Name_Kanjiプロパティについて_Lastの漢字_スペース_Firstの漢字が結合されること()
         {
-            var target = new Name();
-            target.Last = new JapaneseText { Kanji = "佐藤" };
-            target.First = new JapaneseText { Kanji = "美咲" };
+            var target = new Name
+            {
+                Last = new JapaneseText { Kanji = "佐藤" },
+                First = new JapaneseText { Kanji = "美咲" }
+            };
             Assert.That(target.Kanji, Is.EqualTo("佐藤 美咲"));
         }
 
         [TestCase]
         public void Name_Hiraganaプロパティについて_Lastのひらがな_スペース_Firstのひらがなが結合されること()
         {
-            var target = new Name();
-            target.Last = new JapaneseText { Hiragana = "さとう" };
-            target.First = new JapaneseText { Hiragana = "みさき" };
+            var target = new Name
+            {
+                Last = new JapaneseText { Hiragana = "さとう" },
+                First = new JapaneseText { Hiragana = "みさき" }
+            };
             Assert.That(target.Hiragana, Is.EqualTo("さとう みさき"));
         }
 
         [TestCase]
         public void Name_Katakanaプロパティについて_Lastのカタカナ_スペース_Firstのカタカナが結合されること()
         {
-            var target = new Name();
-            target.Last = new JapaneseText { Katakana = "サトウ" };
-            target.First = new JapaneseText { Katakana = "ミサキ" };
+            var target = new Name
+            {
+                Last = new JapaneseText { Katakana = "サトウ" },
+                First = new JapaneseText { Katakana = "ミサキ" }
+            };
             Assert.That(target.Katakana, Is.EqualTo("サトウ ミサキ"));
         }
 
         [TestCase]
         public void Name_ToStringメソッドについて_Kanjiプロパティと同じ文字列であること()
         {
-            var target = new Name();
-            target.Last = new JapaneseText { Kanji = "佐藤" };
-            target.First = new JapaneseText { Kanji = "美咲" };
+            var target = new Name
+            {
+                Last = new JapaneseText { Kanji = "佐藤" },
+                First = new JapaneseText { Kanji = "美咲" }
+            };
             Assert.That(target.ToString(), Is.EqualTo(target.Kanji));
         }
     }

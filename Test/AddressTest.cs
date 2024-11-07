@@ -44,40 +44,48 @@ namespace Test
         [TestCase]
         public void Address_Kanjiプロパティについて_Prefecture_City_Townの漢字が結合されること()
         {
-            var target = new Address();
-            target.Prefecture = new JapaneseText { Kanji = "東京都" };
-            target.City = new JapaneseText { Kanji = "千代田区" };
-            target.Town = new JapaneseText { Kanji = "千代田" };
+            var target = new Address
+            {
+                Prefecture = new JapaneseText { Kanji = "東京都" },
+                City = new JapaneseText { Kanji = "千代田区" },
+                Town = new JapaneseText { Kanji = "千代田" }
+            };
             Assert.That(target.Kanji, Is.EqualTo("東京都千代田区千代田"));
         }
 
         [TestCase]
         public void Address_Hiraganaプロパティについて_Prefecture_City_Townのひらがなが結合されること()
         {
-            var target = new Address();
-            target.Prefecture = new JapaneseText { Hiragana = "とうきょうと" };
-            target.City = new JapaneseText { Hiragana = "ちよだく" };
-            target.Town = new JapaneseText { Hiragana = "ちよだ" };
+            var target = new Address
+            {
+                Prefecture = new JapaneseText { Hiragana = "とうきょうと" },
+                City = new JapaneseText { Hiragana = "ちよだく" },
+                Town = new JapaneseText { Hiragana = "ちよだ" }
+            };
             Assert.That(target.Hiragana, Is.EqualTo("とうきょうとちよだくちよだ"));
         }
 
         [TestCase]
         public void Address_Katakanaプロパティについて_Prefecture_City_Townのカタカナが結合されること()
         {
-            var target = new Address();
-            target.Prefecture = new JapaneseText { Katakana = "トウキョウト" };
-            target.City = new JapaneseText { Katakana = "チヨダク" };
-            target.Town = new JapaneseText { Katakana = "チヨダ" };
+            var target = new Address
+            {
+                Prefecture = new JapaneseText { Katakana = "トウキョウト" },
+                City = new JapaneseText { Katakana = "チヨダク" },
+                Town = new JapaneseText { Katakana = "チヨダ" }
+            };
             Assert.That(target.Katakana, Is.EqualTo("トウキョウトチヨダクチヨダ"));
         }
 
         [TestCase]
         public void Address_ToStringメソッドについて_Kanjiプロパティと同じ文字列であること()
         {
-            var target = new Address();
-            target.Prefecture = new JapaneseText { Kanji = "東京都" };
-            target.City = new JapaneseText { Kanji = "千代田区" };
-            target.Town = new JapaneseText { Kanji = "千代田" };
+            var target = new Address
+            {
+                Prefecture = new JapaneseText { Kanji = "東京都" },
+                City = new JapaneseText { Kanji = "千代田区" },
+                Town = new JapaneseText { Kanji = "千代田" }
+            };
             Assert.That(target.ToString(), Is.EqualTo(target.Kanji));
         }
     }
