@@ -73,6 +73,16 @@ namespace DotGimei
             get { return _prefecture.Kanji + _city.Kanji + _town.Kanji; }
         }
         /// <summary>
+        /// ローマ字の住所を取得します。
+        /// </summary>
+        /// <remarks>
+        /// 都道府県名、市区町村名、および町字名を結合します。
+        /// </remarks>
+        public string Romaji
+        {
+            get { return _prefecture.Romaji + _city.Romaji + _town.Romaji; }
+        }
+        /// <summary>
         /// 現在のオブジェクトを表す文字列を返します。
         /// 返される文字列は、漢字の住所です。
         /// </summary>

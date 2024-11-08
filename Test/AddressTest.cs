@@ -1,10 +1,5 @@
 ﻿using DotGimei;
 using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Test
 {
@@ -48,7 +43,7 @@ namespace Test
             {
                 Prefecture = new JapaneseText { Kanji = "東京都" },
                 City = new JapaneseText { Kanji = "千代田区" },
-                Town = new JapaneseText { Kanji = "千代田" }
+                Town = new JapaneseText { Kanji = "千代田" },
             };
             Assert.That(target.Kanji, Is.EqualTo("東京都千代田区千代田"));
         }
@@ -60,7 +55,7 @@ namespace Test
             {
                 Prefecture = new JapaneseText { Hiragana = "とうきょうと" },
                 City = new JapaneseText { Hiragana = "ちよだく" },
-                Town = new JapaneseText { Hiragana = "ちよだ" }
+                Town = new JapaneseText { Hiragana = "ちよだ" },
             };
             Assert.That(target.Hiragana, Is.EqualTo("とうきょうとちよだくちよだ"));
         }
@@ -72,9 +67,21 @@ namespace Test
             {
                 Prefecture = new JapaneseText { Katakana = "トウキョウト" },
                 City = new JapaneseText { Katakana = "チヨダク" },
-                Town = new JapaneseText { Katakana = "チヨダ" }
+                Town = new JapaneseText { Katakana = "チヨダ" },
             };
             Assert.That(target.Katakana, Is.EqualTo("トウキョウトチヨダクチヨダ"));
+        }
+
+        [TestCase]
+        public void Address_Romajiプロパティについて_Prefecture_City_Townのローマ字が結合されること()
+        {
+            var target = new Address
+            {
+                Prefecture = new JapaneseText { Romaji = "Toukyouto" },
+                City = new JapaneseText { Romaji = "Chiyodaku" },
+                Town = new JapaneseText { Romaji = "Chiyoda" },
+            };
+            Assert.That(target.Romaji, Is.EqualTo("ToukyoutoChiyodakuChiyoda"));
         }
 
         [TestCase]
@@ -84,7 +91,7 @@ namespace Test
             {
                 Prefecture = new JapaneseText { Kanji = "東京都" },
                 City = new JapaneseText { Kanji = "千代田区" },
-                Town = new JapaneseText { Kanji = "千代田" }
+                Town = new JapaneseText { Kanji = "千代田" },
             };
             Assert.That(target.ToString(), Is.EqualTo(target.Kanji));
         }

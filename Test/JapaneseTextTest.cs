@@ -88,6 +88,33 @@ namespace Test
         }
 
         [TestCase]
+        public void JapaneseText_Romajiプロパティについて_規定値はnullではないこと()
+        {
+            var target = new JapaneseText();
+            Assert.That(target.Romaji, Is.Not.Null);
+        }
+
+        [TestCase]
+        public void JapaneseText_Romajiプロパティについて_nullでない値を設定できること()
+        {
+            var target = new JapaneseText
+            {
+                Romaji = "Romaji"
+            };
+            Assert.That(target.Romaji, Is.EqualTo("Romaji"));
+        }
+
+        [TestCase]
+        public void JapaneseText_Romajiプロパティについて_nullを設定すると値が空文字列になること()
+        {
+            var target = new JapaneseText
+            {
+                Romaji = null
+            };
+            Assert.That(target.Romaji, Is.EqualTo(""));
+        }
+
+        [TestCase]
         public void JapaneseText_ToStringメソッドについて_Kanjiプロパティと同じ文字列であること()
         {
             var target = new JapaneseText

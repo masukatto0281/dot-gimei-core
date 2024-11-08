@@ -10,14 +10,22 @@ namespace DotGimei
         private const int KanjiIndex = 0;
         private const int HiraganaIndex = 1;
         private const int KatakanaIndex = 2;
+        private const int RomajiIndex = 3;
 
-        internal class FirstName
+        internal class Inner
         {
-            public List<string[]> male { get; set; }
-            public List<string[]> female { get; set; }
+            [YamlMember(Alias = "male")]
+            public List<string[]> Male { get; set; }
+
+            [YamlMember(Alias = "female")]
+            public List<string[]> Female { get; set; }
         }
-        public FirstName first_name { get; set; }
-        public List<string[]> last_name { get; set; }
+
+        [YamlMember(Alias = "first_name")]
+        public Inner FirstName { get; set; }
+
+        [YamlMember(Alias = "last_name")]
+        public List<string[]> LastName { get; set; }
 
         internal static Names Load(TextReader reader)
         {
@@ -28,17 +36,17 @@ namespace DotGimei
 
         internal Name NextMale(Random r)
         {
-            var first = first_name.male[r.Next(first_name.male.Count)];
-            var last = last_name[r.Next(last_name.Count)];
+            var first = FirstName.Male[r.Next(FirstName.Male.Count)];
+            var last = LastName[r.Next(LastName.Count)];
             return NewName(first, last, GenderIdentity.Male);
         }
         internal Name NextFemale(Random r)
         {
-            var first = first_name.female[r.Next(first_name.female.Count)];
-            var last = last_name[r.Next(last_name.Count)];
+            var first = FirstName.Female[r.Next(FirstName.Female.Count)];
+            var last = LastName[r.Next(LastName.Count)];
             return NewName(first, last, GenderIdentity.Female);
         }
-        private Name NewName(string[] first, string[] last, GenderIdentity gender)
+        private static Name NewName(string[] first, string[] last, GenderIdentity gender)
         {
             return new Name
             {
@@ -46,18 +54,18 @@ namespace DotGimei
                 {
                     Kanji = first[KanjiIndex],
                     Hiragana = first[HiraganaIndex],
-                    Katakana = first[KatakanaIndex]
+                    Katakana = first[KatakanaIndex],
+                    Romaji = first[RomajiIndex],
                 },
                 Last = new JapaneseText
                 {
                     Kanji = last[KanjiIndex],
                     Hiragana = last[HiraganaIndex],
-                    Katakana = last[KatakanaIndex]
+                    Katakana = last[KatakanaIndex],
+                    Romaji = last[RomajiIndex],
                 },
-                Gender = gender
+                Gender = gender,
             };
         }
-
     }
 }
-

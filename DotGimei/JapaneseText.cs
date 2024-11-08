@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace DotGimei
+﻿namespace DotGimei
 {
     /// <summary>
     /// カタカナ、ひらがな、漢字で表現される日本語テキストのインターフェースです。
@@ -19,6 +17,10 @@ namespace DotGimei
         /// 漢字を取得します。
         /// </summary>
         string Kanji { get; }
+        /// <summary>
+        /// ローマ字を取得します。
+        /// </summary>
+        string Romaji { get; }
     }
 
     /// <summary>
@@ -29,6 +31,7 @@ namespace DotGimei
         private string _katakana = "";
         private string _hiragana = "";
         private string _kanji = "";
+        private string _romaji = "";
 
         /// <summary>
         /// カタカナを取得または設定します。
@@ -55,6 +58,14 @@ namespace DotGimei
             set { _kanji = value ?? ""; }
         }
         /// <summary>
+        /// ローマ字を取得または設定します。
+        /// </summary>
+        public string Romaji
+        {
+            get { return _romaji; }
+            set { _romaji = value ?? ""; }
+        }
+        /// <summary>
         /// 現在のオブジェクトを表す文字列を返します。
         /// 返される文字列は、漢字です。
         /// </summary>
@@ -65,4 +76,3 @@ namespace DotGimei
         }
     }
 }
-

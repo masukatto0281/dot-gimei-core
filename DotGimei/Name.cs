@@ -99,6 +99,16 @@ namespace DotGimei
             get { return Last.Kanji + " " + First.Kanji; }
         }
         /// <summary>
+        /// ローマ字の氏名を取得します。
+        /// </summary>
+        /// <remarks>
+        /// 氏（名字）、スペース（<c>" "</c>）、および名（名前）を結合します。
+        /// </remarks>
+        public string Romaji
+        {
+            get { return Last.Romaji + " " + First.Romaji; }
+        }
+        /// <summary>
         /// 現在のオブジェクトを表す文字列を返します。
         /// 返される文字列は、漢字の氏名です。
         /// </summary>

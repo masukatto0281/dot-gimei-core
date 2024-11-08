@@ -58,7 +58,7 @@ namespace Test
             var target = new Name
             {
                 Last = new JapaneseText { Kanji = "佐藤" },
-                First = new JapaneseText { Kanji = "美咲" }
+                First = new JapaneseText { Kanji = "美咲" },
             };
             Assert.That(target.Kanji, Is.EqualTo("佐藤 美咲"));
         }
@@ -69,7 +69,7 @@ namespace Test
             var target = new Name
             {
                 Last = new JapaneseText { Hiragana = "さとう" },
-                First = new JapaneseText { Hiragana = "みさき" }
+                First = new JapaneseText { Hiragana = "みさき" },
             };
             Assert.That(target.Hiragana, Is.EqualTo("さとう みさき"));
         }
@@ -80,9 +80,20 @@ namespace Test
             var target = new Name
             {
                 Last = new JapaneseText { Katakana = "サトウ" },
-                First = new JapaneseText { Katakana = "ミサキ" }
+                First = new JapaneseText { Katakana = "ミサキ" },
             };
             Assert.That(target.Katakana, Is.EqualTo("サトウ ミサキ"));
+        }
+
+        [TestCase]
+        public void Name_Romajiプロパティについて_LastのRomaji_スペース_FirstのRomajiが結合されること()
+        {
+            var target = new Name
+            {
+                Last = new JapaneseText { Katakana = "Satou" },
+                First = new JapaneseText { Katakana = "Misaki" },
+            };
+            Assert.That(target.Katakana, Is.EqualTo("Satou Misaki"));
         }
 
         [TestCase]

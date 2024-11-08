@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace DotGimei
+﻿namespace DotGimei
 {
     /// <summary>
     /// ISO 5218に従って性自認を表現します。
@@ -14,6 +12,6 @@ namespace DotGimei
         /// <summary>コード値2 女性</summary>
         Female = 2,
         /// <summary>コード値9 適用不能</summary>
-        NotApplicable = 9
+        NotApplicable = 9,
     }
 }
