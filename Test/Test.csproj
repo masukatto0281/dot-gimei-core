@@ -9,7 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DotGimei\DotGimei.csproj" />
+    <ProjectReference Include="..\DotGimei\DotGimei-Core.csproj" />
   </ItemGroup>
 
   <ItemGroup>
